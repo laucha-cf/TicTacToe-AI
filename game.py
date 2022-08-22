@@ -26,11 +26,19 @@ class TicTacToe:
         return (self.count_empty_squares()>0)
     
     def make_move(self, square, letter):
+        #If valid move, assign square to letter. Return True
+        #If invalid move, return False
         if np.take(self.board, square) == ' ':
             self.board[square] = letter
             #assign a winner
+            if self.winner(square, letter):
+                self.current_winner = letter
             return True
         return False
+    
+    def winner(self, square, letter):
+        #Winner if 3 in a row
+        
     
 def play(game, x_player, o_player, print_game=True):
     if print_game:
@@ -49,8 +57,16 @@ def play(game, x_player, o_player, print_game=True):
             game.print_board()
             print('')
             
+        if game.current_winner:
+            if print_game:
+                print(f'{letter}\'  wins')
+            return letter
+            
         #After we made the move, we need to alternate players
         if letter == 'X':
             letter = 'O'
         else:
             letter = 'X'
+            
+        if print_game:
+            print('It\'s a tie!')
