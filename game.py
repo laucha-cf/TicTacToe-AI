@@ -1,4 +1,5 @@
 import numpy as np
+from player import HumanPlayer, ComputerPlayer
 
 class TicTacToe:
     def __init__(self):
@@ -36,8 +37,25 @@ class TicTacToe:
             return True
         return False
     
-    def winner(self, square, letter):
+    def winner(self, letter):
         #Winner if 3 in a row
+        board_reshaped = self.board.reshape(3,-1)
+    
+        for i in range(3):
+            #Check for the row
+            if np.all(board_reshaped[i, :]==letter):
+                return True
+            #Check for the column
+            if np.all(board_reshaped[:, i]==letter):
+                return True
+
+        #Check for the diagonal
+        main_diagonal = np.diagonal(board_reshaped)
+        second_diagonal = np.fliplr(board_reshaped).diagonal()
+        if np.all(main_diagonal==letter) or np.all(second_diagonal==letter):
+            return True
+        #If all fail, we don´t have a winner
+        return False
         
     
 def play(game, x_player, o_player, print_game=True):
@@ -70,3 +88,11 @@ def play(game, x_player, o_player, print_game=True):
             
         if print_game:
             print('It\'s a tie!')
+            
+if __name__ == '__main__':
+    x_player = HumanPlayer('X')
+    o_player = ComputerPlayer('O')
+    
+    game = TicTacToe()
+    
+    play(game, x_player, o_player, print_game=True)
