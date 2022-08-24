@@ -4,6 +4,6 @@
 - To switch between these types of games you just have to go to *main.py* file and change the players. 
 <br> <br>
 
-## Does this project seem interesting to you?
-## Let's connect on Social Media!
-## Linkedin: https://www.linkedin.com/in/lautaro-perez-carmona/
+### Does this project seem interesting to you?
+- Let's connect on Social Media!
+- Linkedin: https://www.linkedin.com/in/lautaro-perez-carmona/
