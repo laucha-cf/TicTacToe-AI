@@ -10,7 +10,7 @@ class TicTacToe:
         #Show board as matrix
         print(self.board.reshape(3,-1))
             
-    def print_board_nums():
+    def print_board_nums(self):
         #Create temporary board with positions of posible movements to show
         number_board = np.arange(9).reshape(3,-1)
         for row in number_board:
@@ -18,8 +18,12 @@ class TicTacToe:
             
     def available_moves(self):
         #Return array showing available moves
-        return self.board == ' '
-    
+        available_list = []
+        for i, e in enumerate(self.board):
+            if type(e)!='numpy.int32':
+                available_list.append(i)
+        return available_list
+            
     def count_empty_squares(self):
         return np.count_nonzero(self.board==' ')
     
@@ -32,7 +36,7 @@ class TicTacToe:
         if np.take(self.board, square) == ' ':
             self.board[square] = letter
             #assign a winner
-            if self.winner(square, letter):
+            if self.winner(letter):
                 self.current_winner = letter
             return True
         return False
@@ -40,7 +44,7 @@ class TicTacToe:
     def winner(self, letter):
         #Winner if 3 in a row
         board_reshaped = self.board.reshape(3,-1)
-    
+        
         for i in range(3):
             #Check for the row
             if np.all(board_reshaped[i, :]==letter):

@@ -2,6 +2,7 @@
 import math
 import random
 
+
 # Father class
 class Player:
     def __init__(self, letter):
@@ -19,6 +20,7 @@ class ComputerPlayer(Player):
     def get_move(self, game):
         #Get a random empty spot for the next move
         square = random.choice(game.available_moves())
+        return square
 
 
 class HumanPlayer(Player):
@@ -29,13 +31,13 @@ class HumanPlayer(Player):
         valid_square = False
         square_val = None
         while not valid_square:
-            input_val = input(self.letter + '\'s turn. Input next move (0-9):')
+            input_val = input(self.letter + '\'s turn. Input next move (0-8):')
             #Validate input by:
             #Try to cast it to an integer
             #Check if the spot is available on the board
             try:
                 square_val = int(input_val)
-                if square_val not in game.available():
+                if square_val not in game.available_moves():
                     raise ValueError
                 valid_square = True
             except ValueError:
