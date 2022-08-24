@@ -1,4 +1,5 @@
 import numpy as np
+import time
 from player import HumanPlayer, ComputerPlayer
 
 class TicTacToe:
@@ -20,7 +21,7 @@ class TicTacToe:
         #Return array showing available moves
         available_list = []
         for i, e in enumerate(self.board):
-            if type(e)!='numpy.int32':
+            if (e==' '):
                 available_list.append(i)
         return available_list
             
@@ -69,16 +70,20 @@ def play(game, x_player, o_player, print_game=True):
     letter = 'X'
         
     while game.empty_squares():
+        print(f'Available Moves: {game.available_moves()}')
+        
         if letter == 'O':
             move = o_player.get_move(game)
         else:
             move = x_player.get_move(game)
-            
+        
         if game.make_move(move, letter):
             print(f'{letter} makes a move to square {move}')
             game.print_board()
             print('')
-            
+        
+        time.sleep(1) #Just a little pause between players
+        
         if game.current_winner:
             if print_game:
                 print(f'{letter}\'  wins')
@@ -89,9 +94,11 @@ def play(game, x_player, o_player, print_game=True):
             letter = 'O'
         else:
             letter = 'X'
-            
-        if print_game:
-            print('It\'s a tie!')
+
+        
+    #No squares remaining to play and nobody won        
+    if print_game:
+        print('It\'s a tie!')
             
 if __name__ == '__main__':
     x_player = HumanPlayer('X')
