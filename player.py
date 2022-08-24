@@ -42,5 +42,6 @@ class HumanPlayer(Player):
                 valid_square = True
             except ValueError:
                 print('Invalid Square. Try again')
+                print('')
         
         return square_val
