@@ -1,6 +1,5 @@
 import numpy as np
 import time
-from player import HumanPlayer, ComputerPlayer
 
 class TicTacToe:
     def __init__(self):

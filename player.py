@@ -1,5 +1,4 @@
 
-import math
 import random
 
 
@@ -45,3 +44,22 @@ class HumanPlayer(Player):
                 print('')
         
         return square_val
+    
+class SmartComputerPlayer(Player):
+    def __init__(self, letter):
+        super().__init__(letter)
+        
+    def get_move(self, game):
+        #If all spots are available, choose random
+        if game.empty_squares() == 9:
+            square = random.choice(game.available_moves())
+        else:
+            #Minimax MOMENT
+            square = self.minimax(game, self.letter)
+        return square
+    
+    def minimax(self, game_state, cur_player):
+        maximizer = self.letter
+        minimizer = 'O' if cur_player=='X' else 'X'
+        
+        
