@@ -1,9 +1,9 @@
-from player import HumanPlayer, ComputerPlayer
+from player import HumanPlayer, ComputerPlayer, SmartComputerPlayer
 from game import TicTacToe, play
 
 if __name__ == '__main__':
-    x_player = HumanPlayer('X')
-    o_player = ComputerPlayer('O')
+    x_player = SmartComputerPlayer('X')
+    o_player = HumanPlayer('O')
     
     game = TicTacToe()
     

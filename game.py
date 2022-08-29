@@ -69,7 +69,8 @@ def play(game, x_player, o_player, print_game=True):
     letter = 'X'
         
     while game.empty_squares():
-        print(f'Available Moves: {game.available_moves()}')
+        if print_game:
+            print(f'Available Moves: {game.available_moves()}')
         
         if letter == 'O':
             move = o_player.get_move(game)
@@ -81,7 +82,8 @@ def play(game, x_player, o_player, print_game=True):
             game.print_board()
             print('')
         
-        time.sleep(1) #Just a little pause between players
+        if print_game:
+            time.sleep(1) #Just a little pause between players
         
         if game.current_winner:
             if print_game:
