@@ -12,7 +12,9 @@ You can play against a:
 - Let's connect on Social Media!
 - Linkedin: https://www.linkedin.com/in/lautaro-perez-carmona/
 <br>
+
 ### About Minimax Algorithm
 - https://tutorialforbeginner.com/mini-max-algorithm-in-ai
 - https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/
 - https://en.wikipedia.org/wiki/Minimax
+I highly recommend to take a look at the Minimax PDF archive (in spanish) that is in *Minimax.zip*
