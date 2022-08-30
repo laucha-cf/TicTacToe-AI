@@ -1,9 +1,10 @@
 import math
 import random
 
-
 # Father class
-class Player:
+class Player():
+    """Represents a player for the game
+    """
     def __init__(self, letter):
         #Letter can be X or O
         self.letter = letter
@@ -13,20 +14,36 @@ class Player:
 
 
 class ComputerPlayer(Player):
+    """Represents a Computer Player. Make random choices.
+    """
     def __init__(self, letter):
         super().__init__(letter)
         
     def get_move(self, game):
-        #Get a random empty spot for the next move
+        """Get a random empty spot for the next move
+        Args:
+            game (TicTacToe)
+        Return:
+            square (int): valid square on the board
+        """
         square = random.choice(game.available_moves())
         return square
 
 
 class HumanPlayer(Player):
+    """Represents a Human Player. Movements based on your choices.
+    """
     def __init__(self, letter):
         super().__init__(letter)
         
     def get_move(self, game):
+        """Get a valid spot selected from player.
+        Asks for movement while not valid.
+        Args:
+            game (TicTacToe)
+        Return:
+            square_val (int): square to move
+        """
         valid_square = False
         square_val = None
         while not valid_square:
@@ -46,10 +63,20 @@ class HumanPlayer(Player):
         return square_val
     
 class SmartComputerPlayer(Player):
+    """Represents a Computer Player that make choices based on Minimax Algorithm.
+    It will try to maximize win always.
+    """
     def __init__(self, letter):
         super().__init__(letter)
         
     def get_move(self, game):
+        """Get next move from the board based on Minimax Algorithm.
+        If all spots are available, returns random one.
+        Args:
+            game (TicTacToe)
+        Return:
+            square (int): square to make the move
+        """
         #If all spots are available, choose random
         if game.count_empty_squares() == 9:
             square = random.choice(game.available_moves())
@@ -59,6 +86,17 @@ class SmartComputerPlayer(Player):
         return square
     
     def minimax(self, game_state, cur_player):
+        """
+        Determine the best movement to maximize win based on Minimax Algorithm.
+        Backtracking algorithm that try all possible movements 
+        and assign a score to each one.
+        Args:
+            game_state (TicTacToe): current game
+            cur_player (str): letter of current player
+        Return:
+            best_score (dict): dictionary with best square to move and 
+                                It's score (utility function)
+        """
         maximizer = self.letter
         minimizer = 'O' if cur_player=='X' else 'X'
         

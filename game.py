@@ -1,23 +1,41 @@
 import numpy as np
 import time
-
-class TicTacToe:
+class TicTacToe():
+    """Represents a game of Tic Tac Toe and It's features
+    """
     def __init__(self):
-        self.board = np.full(fill_value=' ', shape=9) #Numpy array to simulate a 3x3 the board
-        self.current_winner = None #Keep track of winner
+        #Numpy array to simulate a 3x3 the board
+        self.board = np.full(fill_value=' ', shape=9) 
+        #Keep track of winner
+        self.current_winner = None 
         
     def print_board(self):
-        #Show board as matrix
+        """Show board as matrix
+        Args:
+            None
+        Return:
+            None
+        """
         print(self.board.reshape(3,-1))
             
     def print_board_nums(self):
-        #Create temporary board with positions of posible movements to show
+        """Show posible movements in board
+        Args:
+            None
+        Return:
+            None
+        """
         number_board = np.arange(9).reshape(3,-1)
         for row in number_board:
             print(row)
             
     def available_moves(self):
-        #Return array showing available moves
+        """Return list with available moves
+        Args:
+            None
+        Return:
+            available moves (list)
+        """
         available_list = []
         for i, e in enumerate(self.board):
             if (e==' '):
@@ -25,14 +43,33 @@ class TicTacToe:
         return available_list
             
     def count_empty_squares(self):
+        """Count number of empty squares in the board
+        Args:
+            None
+        Return:
+            Number of empty squares (int)
+        """
         return np.count_nonzero(self.board==' ')
     
     def empty_squares(self):
+        """Say if there are empty squares in the board
+        Args:
+            None
+        Return:
+            True / False (bool)
+        """
         return (self.count_empty_squares()>0)
     
     def make_move(self, square, letter):
-        #If valid move, assign square to letter. Return True
-        #If invalid move, return False
+        """Assign the letter of the player to the square.
+        If valid move, assign square to letter. Return True.
+        If invalid move, return False
+        Args:
+            square (int): square where player wants to move
+            letter (str): letter of the player
+        Return:
+            True / False (bool)
+        """
         if np.take(self.board, square) == ' ':
             self.board[square] = letter
             #assign a winner
@@ -42,6 +79,12 @@ class TicTacToe:
         return False
     
     def winner(self, letter):
+        """Check if a player is a winner
+        Args:
+            letter (str): letter of a player
+        Return:
+            True / False (bool)
+        """
         #Winner if 3 in a row
         board_reshaped = self.board.reshape(3,-1)
         
@@ -63,6 +106,14 @@ class TicTacToe:
         
     
 def play(game, x_player, o_player, print_game=True):
+    """Start a game between two players
+    Args:
+        game (TicTacToe)
+        x_player, o_player (Player)
+        print_game (bool): default True. Show the game at every step
+    Return:
+        None
+    """
     if print_game:
         game.print_board_nums()
         
