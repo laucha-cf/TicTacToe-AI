@@ -4,9 +4,14 @@ class TicTacToe():
     """Represents a game of Tic Tac Toe and It's features
     """
     def __init__(self):
-        #Numpy array to simulate a 3x3 the board
+        """Method for initializing a TicTacToe object
+        Args:
+            None
+        Attributes:
+            board (numpy array): simulate 3x3 board
+            current_winner (str): default None. Keep track of winner.
+        """
         self.board = np.full(fill_value=' ', shape=9) 
-        #Keep track of winner
         self.current_winner = None 
         
     def print_board(self):

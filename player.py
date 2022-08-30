@@ -6,7 +6,12 @@ class Player():
     """Represents a player for the game
     """
     def __init__(self, letter):
-        #Letter can be X or O
+        """Method for initializing a Player object
+        Args:
+            letter (str)
+        Attributes:
+            letter (str): letter that corresponds to a player. Can be 'X' or 'O'.
+        """
         self.letter = letter
 
     def get_move(self, game):
