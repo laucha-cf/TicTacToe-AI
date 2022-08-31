@@ -1,5 +1,5 @@
-from player import HumanPlayer, ComputerPlayer, SmartComputerPlayer
-from game import TicTacToe, play
+from modules.player import HumanPlayer, ComputerPlayer, SmartComputerPlayer
+from modules.game import TicTacToe, play
 
 if __name__ == '__main__':
     x_player = SmartComputerPlayer('X')

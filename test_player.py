@@ -1,6 +1,6 @@
-from unittest.case import _AssertRaisesContext
-from player import ComputerPlayer
-from game import TicTacToe
+
+from modules.player import ComputerPlayer
+from modules.game import TicTacToe
 import numpy as np
 import unittest
 

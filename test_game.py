@@ -1,6 +1,9 @@
-from game import TicTacToe
+
+from modules.game import TicTacToe
 import numpy as np
 import unittest
+import sys
+
 
 class TestTicTacToe(unittest.TestCase):
     #TEST available_moves
