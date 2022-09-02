@@ -2,6 +2,7 @@ from modules.player import HumanPlayer, ComputerPlayer, SmartComputerPlayer
 from modules.game import TicTacToe, play
 
 if __name__ == '__main__':
+    """
     x_wins = 0
     o_wins = 0
     ties = 0
@@ -25,4 +26,9 @@ if __name__ == '__main__':
     print(f'X Wins: {x_wins}')
     print(f'O Wins: {o_wins}')
     print(f'Ties: {ties}')
+    """
     
+    x_player = SmartComputerPlayer('X')
+    o_player = HumanPlayer('O')
+    game = TicTacToe()
+    play(game, x_player, o_player, print_game=True)
