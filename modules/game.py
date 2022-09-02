@@ -117,7 +117,7 @@ def play(game, x_player, o_player, print_game=True):
         x_player, o_player (Player)
         print_game (bool): default True. Show the game at every step
     Return:
-        None
+        letter (str): letter of winner or None: Tie
     """
     if print_game:
         game.print_board_nums()
@@ -134,9 +134,10 @@ def play(game, x_player, o_player, print_game=True):
             move = x_player.get_move(game)
         
         if game.make_move(move, letter):
-            print(f'{letter} makes a move to square {move}')
-            game.print_board()
-            print('')
+            if print_game:
+                print(f'{letter} makes a move to square {move}')
+                game.print_board()
+                print('')
         
         if print_game:
             time.sleep(1) #Just a little pause between players
